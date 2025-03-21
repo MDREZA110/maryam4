@@ -355,8 +355,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("  ✅    navigating...")),
       );
+//^ api call
 
       fetchOtp(context, value.trim());
+
+//^-----
+
       //   final authService = AuthService();
       //   await authService.sendPhoneNumber(
       //       context, phoneNumberController.text.trim());

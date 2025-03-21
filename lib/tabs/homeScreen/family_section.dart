@@ -6,18 +6,18 @@ import 'package:flutter_html/flutter_html.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
-import 'package:mariyam/issue_flip_effect.dart';
-import 'package:mariyam/providers/theme_provider.dart';
-import 'package:mariyam/tabs/homeScreen/home_screen.dart';
-import 'package:mariyam/tabs/homeScreen/ontap_previousissue.dart';
-import 'package:mariyam/screens/pdfview_screen.dart';
-import 'package:mariyam/ttt.dart';
+import 'package:maryam/issue_flip_effect.dart';
+import 'package:maryam/providers/theme_provider.dart';
+import 'package:maryam/tabs/homeScreen/home_screen.dart';
+import 'package:maryam/tabs/homeScreen/ontap_previousissue.dart';
+import 'package:maryam/screens/pdfview_screen.dart';
+import 'package:maryam/ttt.dart';
 import 'package:http/http.dart' as http;
-import 'package:mariyam/widgets/cardAndOpen/container_reuseable.dart';
-import 'package:mariyam/widgets/homeappbar.dart';
-import 'package:mariyam/widgets/ontap_slider_screen.dart';
+import 'package:maryam/widgets/cardAndOpen/container_reuseable.dart';
+import 'package:maryam/widgets/homeappbar.dart';
+import 'package:maryam/widgets/ontap_slider_screen.dart';
 
-import 'package:mariyam/widgets/suscribe/subscribe_screen.dart';
+import 'package:maryam/widgets/suscribe/subscribe_screen.dart';
 import 'package:provider/provider.dart';
 
 class FamilySection extends StatefulWidget {

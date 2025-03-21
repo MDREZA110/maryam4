@@ -73,7 +73,7 @@ class SettingsTabState extends State<SettingsTab> {
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
         Padding(
           padding: const EdgeInsets.only(
-            top: 20,
+            top: 8,
           ),
           child: Center(
             child: Column(
@@ -295,7 +295,9 @@ class SettingsTabState extends State<SettingsTab> {
             ],
           ),
         ),
-        //const SizedBox(height: 5),
+        // const SizedBox(height: 5
+        //     //60
+        //     ), // Add some space at the bottom
       ]),
     );
   }
