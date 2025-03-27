@@ -256,7 +256,7 @@ class _UpdateDetailsState extends State<UpdateDetails> {
               "MobileNo": _phoneController.text.trim(),
               "EmailId": "k@gmail.com",
               "ProfilePic": "dfsd123",
-              "DOB": DateFormat("dd/MM/yyyy").format(_selectedDate!),
+              "DOB": DateFormat("MM/dd/yyyy").format(_selectedDate!),
               //"12/02/2003",
               //DateFormat("dd/MM/yyyy").format(_selectedDate!),
               "Address": selectedGender!,
@@ -535,11 +535,14 @@ class _UpdateDetailsState extends State<UpdateDetails> {
                 ],
               ),
             )
-          : const Center(
-              child: CircularProgressIndicator(
-                color: Color(0xFFCD3864),
-              ),
+          : Center(
+              child: Text("Please Login"),
             ),
+      //  const Center(
+      //     child: CircularProgressIndicator(
+      //       color: Color(0xFFCD3864),
+      //     ),
+      //   ),
     );
   }
 }

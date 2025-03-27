@@ -25,8 +25,7 @@ class RegisterUser {
             "EmailId": user.email!,
             "Address": user.address!,
             "DOB":
-                "${user.dob?.day}/${user.dob?.month}/${user.dob?.year}", //^ NOW ADDED
-
+                "${user.dob?.month}/${user.dob?.day}/${user.dob?.year}", //^ NOW ADDED    format{MM/DD/YYYY}
             //   user.dob!,
             "Gender": user.gender!,
             "AddedBy": 1,

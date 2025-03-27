@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:maryam/providers/theme_provider.dart';
+import 'package:maryam/tabs/homeScreen/archive_sections_screen_reuseable.dart';
 import 'package:maryam/tabs/homeScreen/sections_screen_reuseable.dart';
 
 import 'package:maryam/tabs/magzine.dart';
@@ -72,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
       SectionTemplate(cardItems: cardItems, menuId: '11'),
       SectionTemplate(cardItems: cardItems, menuId: '12'),
       SectionTemplate(cardItems: cardItems, menuId: '13'),
-      SectionTemplate(cardItems: cardItems, menuId: '14'),
+      ArchiveSectionTemplate(cardItems: cardItems, menuId: '14'),
     ];
   }
 

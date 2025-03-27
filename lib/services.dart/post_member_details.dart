@@ -51,13 +51,14 @@ Future<SubscriptionResponse?> fetchSubscriptionData(
       // Extracting the "d" field from response
       Map<String, dynamic> rawData = json.decode(response.body);
       String extractedJson = rawData['d'];
+      print('✅ (Json): $extractedJson');
 
       // Decoding the inner JSON
       Map<String, dynamic> finalData = json.decode(extractedJson);
-      print('Failed to load data: $finalData');
+      //print('✅ Data from API : $finalData');
       return SubscriptionResponse.fromJson(finalData);
     } else {
-      print('Failed to load data: ${response.statusCode}');
+      print('Fauld to load data: ${response.statusCode}');
       print(response.body);
       return null;
     }

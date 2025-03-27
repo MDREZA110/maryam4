@@ -18,6 +18,17 @@
 
        
         >
+
+        <!-- CCAvenue WebViewActivity -->
+    <!-- CCAvenue WebViewActivity Declaration -->
+        <activity
+            android:name="com.avinash.gotluru.cc_avenue.Framework.WebViewActivity"
+            android:exported="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:hardwareAccelerated="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+
         
         <activity
             android:name=".MainActivity"

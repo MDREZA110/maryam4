@@ -50,7 +50,7 @@ class _MyTabBarState extends State<MyTabBar> {
 
   final appbarTitle = [
     'Home',
-    'Magazine',
+    'My Magazine',
     'Setting',
     'Updates',
     'explor',
@@ -63,7 +63,7 @@ class _MyTabBarState extends State<MyTabBar> {
       "height": 20.5
     },
     {
-      "title": 'Magazine', //^ magzine --> magazine
+      "title": 'My Magazine', //^ magzine --> magazine
       "imgPath": 'assets/images/icon_tabmagzine.png',
       "height": 25.0
     },

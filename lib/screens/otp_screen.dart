@@ -41,6 +41,12 @@ class _OtpScreenState extends State<OtpScreen> {
   void initState() {
     super.initState();
     //  _generatedOtp = _generateOtp();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Your OTP: ${widget.otp}')),
+      );
+    });
     startTimer();
 
     // sendWhatsAppMessage(

@@ -8,6 +8,7 @@ import 'package:maryam/models/subscription_model.dart';
 
 import 'package:maryam/models/user.dart';
 import 'package:maryam/services.dart/post_member_details.dart';
+import 'package:maryam/widgets/suscribe/show_transaction_details.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MemberDetails extends StatefulWidget {
@@ -654,6 +655,21 @@ class _MemberDetailsState extends State<MemberDetails> {
                                 for (var item in response.data) {
                                   print(
                                       "User Name: ${item.name}, Total Amount: ${item.totalAmount}");
+                                  print("Response Body: $response");
+
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return DisplayTransactionDetailsScreen(
+                                          subscriptionData: subscriptionData,
+                                          name: _nameController.text.trim(),
+                                          phoneNumber:
+                                              _phoneController.text.trim(),
+                                          price: widget.grandTotal,
+                                        );
+                                      },
+                                    ),
+                                  );
                                 }
                               } else {
                                 print("Failed to fetch data.");
