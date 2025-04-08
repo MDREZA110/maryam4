@@ -56,11 +56,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> getSections() {
     return [
-      FamilySection(cardItems: cardItems),
+      HomeSection(cardItems: cardItems),
       // WomensRightSection(cardItems: cardItems),
       // ParvarishSection(cardItems: cardItems),
       // HealthSection(cardItems: cardItems),
       // TafseerSection(cardItems: cardItems),
+
+      //icon_tabhome.png
+
+      SectionTemplate(cardItems: cardItems, menuId: '2'),
       SectionTemplate(cardItems: cardItems, menuId: '3'),
       SectionTemplate(cardItems: cardItems, menuId: '4'),
       SectionTemplate(cardItems: cardItems, menuId: '5'),
@@ -162,29 +166,34 @@ class _HomeScreenState extends State<HomeScreen> {
                   //crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     MyIcons(
-                      imagePath: 'assets/images/icon_family.png',
-                      text: 'Family',
-                      changecolor: false,
+                      changecolor: sectionIndex == 0,
+                      imagePath: 'assets/images/icon_tabhome.png',
+                      text: 'Home',
+                      iconSize: 25,
+                      boxHeight: 13.4,
+                      // changecolor: false,
                       onClick: () {
                         setState(() {
                           sectionIndex = 0;
                         });
                       },
                     ),
+
                     MyIcons(
                       changecolor: sectionIndex == 1,
-                      imagePath: 'assets/images/icon_womenrights.png',
-                      text: 'Women Rights',
+                      imagePath: 'assets/images/icon_family.png',
+                      text: 'Family',
                       onClick: () {
                         setState(() {
                           sectionIndex = 1;
                         });
                       },
                     ),
+
                     MyIcons(
                       changecolor: sectionIndex == 2,
-                      imagePath: 'assets/images/icon_parvarish.png',
-                      text: 'Parvarish',
+                      imagePath: 'assets/images/icon_womenrights.png',
+                      text: 'Women Rights',
                       onClick: () {
                         setState(() {
                           sectionIndex = 2;
@@ -193,9 +202,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     MyIcons(
                       changecolor: sectionIndex == 3,
-                      imagePath: 'assets/images/icon_health.png',
-                      text: 'Health',
-                      boxHeight: 3.5,
+                      imagePath: 'assets/images/icon_parvarish.png',
+                      text: 'Parvarish',
                       onClick: () {
                         setState(() {
                           sectionIndex = 3;
@@ -204,22 +212,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     MyIcons(
                       changecolor: sectionIndex == 4,
-                      imagePath: 'assets/images/icon_tafseer.png',
-                      text: 'Tafseer',
-                      boxHeight: 5.5,
+                      imagePath: 'assets/images/icon_health.png',
+                      text: 'Health',
+                      boxHeight: 3.5,
                       onClick: () {
                         setState(() {
                           sectionIndex = 4;
                         });
                       },
                     ),
-
-                    //^ 8 more copied (MyIcon)
-
                     MyIcons(
                       changecolor: sectionIndex == 5,
                       imagePath: 'assets/images/icon_tafseer.png',
-                      text: 'Aqaid',
+                      text: 'Tafseer',
                       boxHeight: 5.5,
                       onClick: () {
                         setState(() {
@@ -228,10 +233,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     ),
 
+                    //^ 8 more copied (MyIcon)
+
                     MyIcons(
                       changecolor: sectionIndex == 6,
                       imagePath: 'assets/images/icon_tafseer.png',
-                      text: 'Ahkam',
+                      text: 'Aqaid',
                       boxHeight: 5.5,
                       onClick: () {
                         setState(() {
@@ -243,7 +250,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     MyIcons(
                       changecolor: sectionIndex == 7,
                       imagePath: 'assets/images/icon_tafseer.png',
-                      text: '14 Masoomeen',
+                      text: 'Ahkam',
                       boxHeight: 5.5,
                       onClick: () {
                         setState(() {
@@ -255,7 +262,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     MyIcons(
                       changecolor: sectionIndex == 8,
                       imagePath: 'assets/images/icon_tafseer.png',
-                      text: 'Story',
+                      text: '14 Masoomeen',
                       boxHeight: 5.5,
                       onClick: () {
                         setState(() {
@@ -267,7 +274,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     MyIcons(
                       changecolor: sectionIndex == 9,
                       imagePath: 'assets/images/icon_tafseer.png',
-                      text: 'Articles',
+                      text: 'Story',
                       boxHeight: 5.5,
                       onClick: () {
                         setState(() {
@@ -279,7 +286,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     MyIcons(
                       changecolor: sectionIndex == 10,
                       imagePath: 'assets/images/icon_tafseer.png',
-                      text: 'News',
+                      text: 'Articles',
                       boxHeight: 5.5,
                       onClick: () {
                         setState(() {
@@ -291,7 +298,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     MyIcons(
                       changecolor: sectionIndex == 11,
                       imagePath: 'assets/images/icon_tafseer.png',
-                      text: 'Recipe',
+                      text: 'News',
                       boxHeight: 5.5,
                       onClick: () {
                         setState(() {
@@ -303,11 +310,23 @@ class _HomeScreenState extends State<HomeScreen> {
                     MyIcons(
                       changecolor: sectionIndex == 12,
                       imagePath: 'assets/images/icon_tafseer.png',
-                      text: 'Archive',
+                      text: 'Recipe',
                       boxHeight: 5.5,
                       onClick: () {
                         setState(() {
                           sectionIndex = 12;
+                        });
+                      },
+                    ),
+
+                    MyIcons(
+                      changecolor: sectionIndex == 13,
+                      imagePath: 'assets/images/icon_tafseer.png',
+                      text: 'Archive',
+                      boxHeight: 5.5,
+                      onClick: () {
+                        setState(() {
+                          sectionIndex = 13;
                         });
                       },
                     ),

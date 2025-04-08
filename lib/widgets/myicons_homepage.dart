@@ -57,6 +57,7 @@ class _MyIconsState extends State<MyIcons> {
                         widget.imagePath,
                         height: widget.iconSize,
                         width: widget.iconSize,
+                        color: Colors.white,
                       ),
                       SizedBox(
                         height:

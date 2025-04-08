@@ -235,6 +235,7 @@ Future<List<String>> fetchImages(int issueId) async {
       List<dynamic> data = json.decode(response.body);
       List<String> issueId =
           data.map<String>((item) => item['ImageUpload'] as String).toList();
+
       return issueId;
     } else {
       throw Exception('Failed to load images');

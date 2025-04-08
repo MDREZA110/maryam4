@@ -1,0 +1,2 @@
+D:/office/maryam4/maryam/android/app/.cxx/Debug/6t545k6w/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/office/maryam4/maryam/android/app/.cxx/Debug/6t545k6w/armeabi-v7a/CMakeFiles/rebuild_cache.dir

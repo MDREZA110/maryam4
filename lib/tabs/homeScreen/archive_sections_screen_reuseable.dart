@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:maryam/providers/theme_provider.dart';
 import 'package:maryam/widgets/cardAndOpen/card_screen.dart';

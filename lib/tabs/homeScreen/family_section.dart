@@ -20,15 +20,15 @@ import 'package:maryam/widgets/ontap_slider_screen.dart';
 import 'package:maryam/widgets/suscribe/subscribe_screen.dart';
 import 'package:provider/provider.dart';
 
-class FamilySection extends StatefulWidget {
+class HomeSection extends StatefulWidget {
   final List<Map<String, dynamic>> cardItems;
-  const FamilySection({super.key, required this.cardItems});
+  const HomeSection({super.key, required this.cardItems});
 
   @override
-  State<FamilySection> createState() => _FamilySectionState();
+  State<HomeSection> createState() => _HomeSectionState();
 }
 
-class _FamilySectionState extends State<FamilySection> {
+class _HomeSectionState extends State<HomeSection> {
   int _currentIndex = 0;
   List<Map<String, dynamic>> sliderItems = [];
   List<Map<String, dynamic>> previousIssues = [];
