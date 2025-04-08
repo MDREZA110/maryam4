@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cc_avenue/cc_avenue.dart';
+// import 'package:cc_avenue/cc_avenue.dart';
 import 'package:flutter/services.dart';
 
 class PaymentScreen extends StatefulWidget {
@@ -19,18 +19,18 @@ class _PaymentScreenState extends State<PaymentScreen> {
       debugPrint('Redirect URL: https://emaryam.com/api/Payment/Response');
       debugPrint('RSA Key URL: https://yourwebsite.com/getRSAKey');
 
-      await CcAvenue.cCAvenueInit(
-        transUrl:
-            'https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction', // For testing
-        accessCode: 'AVNW31LK23AN41WNNA',
-        merchantId: '3935159',
-        orderId: '123456',
-        amount: '1',
-        currencyType: 'INR',
-        cancelUrl: 'https://emaryam.com/api/Payment/Cancel',
-        redirectUrl: 'https://emaryam.com/api/Payment/Response',
-        rsaKeyUrl: '8AC95CB76C8E40961BAA51CADA151651',
-      );
+      // await CcAvenue.cCAvenueInit(
+      //   transUrl:
+      //       'https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction', // For testing
+      //   accessCode: 'AVNW31LK23AN41WNNA',
+      //   merchantId: '3935159',
+      //   orderId: '123456',
+      //   amount: '1',
+      //   currencyType: 'INR',
+      //   cancelUrl: 'https://emaryam.com/api/Payment/Cancel',
+      //   redirectUrl: 'https://emaryam.com/api/Payment/Response',
+      //   rsaKeyUrl: '8AC95CB76C8E40961BAA51CADA151651',
+      // );
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Payment initiated successfully')),

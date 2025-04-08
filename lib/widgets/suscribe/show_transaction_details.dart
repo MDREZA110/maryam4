@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:maryam/models/subscription_model.dart';
 import 'package:maryam/providers/theme_provider.dart';
-import 'package:cc_avenue/cc_avenue.dart';
+// import 'package:cc_avenue/cc_avenue.dart';
 import 'package:maryam/widgets/suscribe/payment_sereen.dart';
 
 class DisplayTransactionDetailsScreen extends StatelessWidget {
