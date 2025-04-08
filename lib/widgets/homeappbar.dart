@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:maryam/tabs/magzine.dart';
+import 'package:maryam/tabs/tab.dart';
 import 'package:maryam/widgets/suscribe/subscribe_screen.dart';
 
 class HomeAppBar extends StatefulWidget {
@@ -38,9 +40,16 @@ class _HomeAppBarState extends State<HomeAppBar> {
     return AppBar(
       automaticallyImplyLeading: false,
       backgroundColor: const Color(0xFFCD3864),
-      title: Image.asset(
-        'assets/images/logo.png',
-        height: 24,
+      title: GestureDetector(
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const MyTabBar(),
+          ),
+        ),
+        child: Image.asset(
+          'assets/images/logo.png',
+          height: 24,
+        ),
       ),
       actions: [
         // if (!   widget.hideSearchIcon)

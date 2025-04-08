@@ -10,7 +10,7 @@ import 'package:maryam/tabs/homeScreen/sections_screen_reuseable.dart';
 
 import 'package:maryam/tabs/magzine.dart';
 import 'package:maryam/tabs/more/more.dart';
-import 'package:maryam/tabs/homeScreen/family_section.dart';
+import 'package:maryam/tabs/homeScreen/home_section.dart';
 import 'package:maryam/tabs/homeScreen/health_section.dart';
 import 'package:maryam/tabs/homeScreen/parvarish_section.dart';
 import 'package:maryam/tabs/homeScreen/tafseer_section.dart';

@@ -6,6 +6,7 @@ import 'package:maryam/providers/text_size_provider.dart';
 import 'package:maryam/providers/theme_provider.dart';
 import 'package:maryam/services.dart/cardscreen_comntent.dart';
 import 'package:http/http.dart' as http;
+import 'package:maryam/tabs/tab.dart';
 import 'package:provider/provider.dart';
 
 class WrCardScreen extends StatefulWidget {
@@ -88,11 +89,24 @@ class _WrCardScreenState extends State<WrCardScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Image.asset(
-                  'assets/images/logo.png',
-                  height: 24,
-                  // fit: BoxFit.fitHeight,
+                // Image.asset(
+                //   'assets/images/logo.png',
+                //   height: 24,
+                //   // fit: BoxFit.fitHeight,
+                // ),
+
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const MyTabBar(),
+                    ),
+                  ),
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    height: 24,
+                  ),
                 ),
+
                 const SizedBox(
                   width: 200,
                 ),

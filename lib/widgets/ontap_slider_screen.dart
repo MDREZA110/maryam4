@@ -6,6 +6,7 @@ import 'package:maryam/providers/text_size_provider.dart';
 import 'package:maryam/providers/theme_provider.dart';
 import 'package:maryam/services.dart/cardscreen_comntent.dart';
 import 'package:http/http.dart' as http;
+import 'package:maryam/tabs/tab.dart';
 import 'package:provider/provider.dart';
 
 class OnTapSliderScreen extends StatefulWidget {
@@ -42,46 +43,61 @@ class _OnTapSliderScreenState extends State<OnTapSliderScreen> {
 //^ AppBar
 
         child: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: const Color(0xFFCD3864),
           actions: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset(
-                  'assets/images/logo.png',
-                  height: 24,
-                  // fit: BoxFit.fitHeight,
+                // Image.asset(
+                //   'assets/images/logo.png',
+                //   height: 24,
+                //   // fit: BoxFit.fitHeight,
+                // ),
+
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const MyTabBar(),
+                    ),
+                  ),
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    height: 24,
+                  ),
                 ),
+
                 const SizedBox(
-                  width: 80,
+                  width: 190,
+                  //80,
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    IconButton(
-                      icon: Image.asset(
-                        'assets/images/icon_search.png',
-                        height: 20,
-                      ),
-                      onPressed: () {
-                        // Add your onPressed code here!
-                      },
-                    ),
-                    IconButton(
-                      icon: Image.asset(
-                        'assets/images/icon_subscribe.png',
-                        height: 20,
-                      ),
-                      onPressed: () {
-                        // Add your onPressed code here!
-                      },
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    )
-                  ],
-                ),
+                // Row(
+                //   mainAxisSize: MainAxisSize.min,
+                //   mainAxisAlignment: MainAxisAlignment.end,
+                //   children: [
+                //     IconButton(
+                //       icon: Image.asset(
+                //         'assets/images/icon_search.png',
+                //         height: 20,
+                //       ),
+                //       onPressed: () {
+                //         // Add your onPressed code here!
+                //       },
+                //     ),
+                //     IconButton(
+                //       icon: Image.asset(
+                //         'assets/images/icon_subscribe.png',
+                //         height: 20,
+                //       ),
+                //       onPressed: () {
+                //         // Add your onPressed code here!
+                //       },
+                //     ),
+                //     const SizedBox(
+                //       width: 10,
+                //     )
+                //   ],
+                // ),
               ],
             ),
           ],
