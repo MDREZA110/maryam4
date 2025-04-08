@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:maryam/tabs/more/archive_screen.dart';
 import 'package:maryam/tabs/more/masoomeen_screen.dart';
 import 'package:maryam/tabs/more/r_more_cards.dart';
 import 'package:maryam/widgets/mylistile.dart';
@@ -132,24 +133,34 @@ class _MoreTabState extends State<MoreTab> {
         children: [
           for (int i = 0; i < options.length; i++)
             SettingsTile(
-                imgpath: 'assets/images/more_icon${i + 1}.png',
-                title: options[i],
-                onTap: i == 7
-                    ? () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => MasoomeenScreen(
-                                  cardItems: cardItems,
-                                  menuId: map[options[i]]!,
-                                )));
-                      }
-                    : () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => RMoreCards(
-                                  cardItems: cardItems,
-                                  menuId: map[options[i]]!,
-                                  title: options[i],
-                                )));
-                      })
+              imgpath: 'assets/images/more_icon${i + 1}.png',
+              title: options[i],
+              onTap: i == 7
+                  ? () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => MasoomeenScreen(
+                                cardItems: cardItems,
+                                menuId: map[options[i]]!,
+                              )));
+                    }
+                  : i == 12
+                      ? () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ArchiveScreen(
+                                    cardItems: cardItems,
+                                    menuId: map[options[i]]!,
+                                    title: options[i],
+                                  )));
+                        }
+                      : () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => RMoreCards(
+                                    cardItems: cardItems,
+                                    menuId: map[options[i]]!,
+                                    title: options[i],
+                                  )));
+                        },
+            ),
         ],
       ),
     );
