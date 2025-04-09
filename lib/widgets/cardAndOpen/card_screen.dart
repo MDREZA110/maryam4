@@ -7,6 +7,7 @@ import 'package:maryam/providers/theme_provider.dart';
 import 'package:maryam/services.dart/cardscreen_comntent.dart';
 import 'package:http/http.dart' as http;
 import 'package:maryam/tabs/tab.dart';
+import 'package:maryam/widgets/cardAndOpen/card_reuseable.dart';
 import 'package:provider/provider.dart';
 
 class WrCardScreen extends StatefulWidget {
@@ -214,6 +215,108 @@ class _WrCardScreenState extends State<WrCardScreen> {
                       ),
                     ),
                   ),
+
+                  //^  Recent Card,       Most Watched          & Related Article Card
+
+                  for (int i = 1; i <= 3; i++)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 3,
+                        horizontal: 20,
+                      ),
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Text(
+                                i == 1
+                                    ? "Recent"
+                                    : i == 2
+                                        ? "Most Watched"
+                                        : "Related Article",
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color:
+                                      // const Color.fromARGB(255, 70, 70, 70),
+                                      const Color(0xFFCD3864),
+                                )),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 70,
+                              ),
+                              child: Divider(
+                                thickness: 5,
+                                color: const Color.fromARGB(255, 70, 70, 70),
+                              ),
+                            ),
+                            MyCard(
+                              image:
+                                  // contentList.isNotEmpty
+                                  // ? contentList[0]["ThumbnailImage"].toString()
+                                  // :
+                                  "https://emaryam.com/Uploads/Content/ThumbnailImage/323035.jpeg",
+                              title:
+                                  //  contentList.isNotEmpty
+                                  //     ? contentList[0]["Title"].toString()
+                                  //     :
+                                  'Title',
+                              contentId:
+                                  //  contentList.isNotEmpty
+                                  //     ? contentList[0]["ContentId"]
+                                  //     :
+                                  40,
+                              description:
+                                  //  contentList.isNotEmpty
+                                  //     ? contentList[0]["Description"].toString()
+                                  //     :
+                                  "Description",
+                              content:
+                                  // contentList.isNotEmpty
+                                  //     ? contentList[0]["Content"].toString()
+                                  //     :
+                                  "Content",
+                            ),
+                            MyCard(
+                              image: contentList.isNotEmpty
+                                  ? contentList[0]["ThumbnailImage"].toString()
+                                  : "http://emaryam.com/Uploads/Content/ThumbnailImage/322525.jpg",
+                              title: contentList.isNotEmpty
+                                  ? contentList[0]["Title"].toString()
+                                  : 'Title',
+                              contentId: contentList.isNotEmpty
+                                  ? contentList[0]["ContentId"]
+                                  : 30,
+                              description: contentList.isNotEmpty
+                                  ? contentList[0]["Description"].toString()
+                                  : "Description",
+                              content: contentList.isNotEmpty
+                                  ? contentList[0]["Content"].toString()
+                                  : "Content",
+                            ),
+                            MyCard(
+                              image: contentList.isNotEmpty
+                                  ? contentList[0]["ThumbnailImage"].toString()
+                                  : "http://emaryam.com/Uploads/Content/ThumbnailImage/322525.jpg",
+                              title: contentList.isNotEmpty
+                                  ? contentList[0]["Title"].toString()
+                                  : 'Title',
+                              contentId: contentList.isNotEmpty
+                                  ? contentList[0]["ContentId"]
+                                  : 29,
+                              description: contentList.isNotEmpty
+                                  ? contentList[0]["Description"].toString()
+                                  : "Description",
+                              content: contentList.isNotEmpty
+                                  ? contentList[0]["Content"].toString()
+                                  : "Content",
+                            ),
+                            SizedBox(
+                              height: 24,
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
                 ],
               ),
             ),

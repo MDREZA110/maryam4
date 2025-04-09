@@ -1,0 +1,2 @@
+D:/office/maryam4/maryam/android/app/.cxx/RelWithDebInfo/2l294i6d/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/office/maryam4/maryam/android/app/.cxx/RelWithDebInfo/2l294i6d/arm64-v8a/CMakeFiles/rebuild_cache.dir
