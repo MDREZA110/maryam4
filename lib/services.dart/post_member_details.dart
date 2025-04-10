@@ -53,13 +53,23 @@ Future<SubscriptionResponse?> fetchSubscriptionData(
       String extractedJson = rawData['d'];
       print('✅ (Json): $extractedJson');
 
+      Map<String, dynamic> finalJson = json.decode(extractedJson);
+      if (finalJson["status"] == "success" &&
+          finalJson["data"] != null &&
+          finalJson["data"].isNotEmpty) {
+        // int subscriptionId = finalJson["data"][0]["SubscriptionId"];
+        // print('✅ Subscription ID: ${finalJson["data"][0]["SubscriptionId"]}');
+      } else {
+        print('❌ No subscription data found.');
+      }
+
       // Decoding the inner JSON
       Map<String, dynamic> finalData = json.decode(extractedJson);
-      //print('✅ Data from API : $finalData');
+      print('✅ Subscription ID: ${finalData["data"][0]["SubscriptionId"]}');
       return SubscriptionResponse.fromJson(finalData);
     } else {
       print('Fauld to load data: ${response.statusCode}');
-      print(response.body);
+      // print(response.body);
       return null;
     }
   } catch (e) {

@@ -626,11 +626,14 @@ class _MemberDetailsState extends State<MemberDetails> {
                                 name:
                                     _nameController.text.trim(), //"ankit Sir",
                                 whatsappNo: _whatsappController.text
+                                    .trim()
                                     .toString()
                                     .trim(), //"9565931965",
                                 mobileNo: _phoneController.text
+                                    .trim()
                                     .trim(), //"9565931965",
                                 emailId: _emailController.text
+                                    .trim()
                                     .trim(), //"K@gmail.com",
                                 issueId: widget.issueIdNo,
                                 postTypeId: widget.postTypeId,
@@ -661,6 +664,9 @@ class _MemberDetailsState extends State<MemberDetails> {
                                     MaterialPageRoute(
                                       builder: (context) {
                                         return DisplayTransactionDetailsScreen(
+                                          subscriptionId:
+                                              response.subbscriptionId,
+                                          // 35, // TODO: Pass the actual subscription ID
                                           subscriptionData: subscriptionData,
                                           name: _nameController.text.trim(),
                                           phoneNumber:

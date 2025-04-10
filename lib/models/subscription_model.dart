@@ -3,17 +3,30 @@ import 'dart:convert';
 class SubscriptionResponse {
   final String status;
   final List<SubscriptionData> data;
+  final int subbscriptionId;
+  //final int subscriptionId; // Added subscriptionId field
 
-  SubscriptionResponse({required this.status, required this.data});
+  SubscriptionResponse({
+    required this.status,
+    required this.data,
+    required this.subbscriptionId,
+    /*required this.subscriptionId*/
+  });
 
-  factory SubscriptionResponse.fromJson(Map<String, dynamic> json) {
+  factory SubscriptionResponse.fromJson(
+    Map<String, dynamic> json,
+  ) {
+    print('✅ JJJJJJ ID: ${json["data"][0]["SubscriptionId"]}');
+
     var list = json['data'] as List? ?? [];
     List<SubscriptionData> dataList =
         list.map((i) => SubscriptionData.fromJson(i)).toList();
 
     return SubscriptionResponse(
-      status: json['status'] ?? 'unknown', // Default value if missing
+      subbscriptionId: json["data"][0]["SubscriptionId"],
+      status: json['status'], // Default value if missing
       data: dataList,
+      //subscriptionId: json['SubscriptionId'],
     );
   }
 }
@@ -99,32 +112,6 @@ class SubscriptionData {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import 'dart:convert';
 

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 // import 'package:cc_avenue/cc_avenue.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({super.key});
+  final int subscriptionId;
+  const PaymentScreen({super.key, required this.subscriptionId});
 
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
@@ -56,7 +58,22 @@ class _PaymentScreenState extends State<PaymentScreen> {
       appBar: AppBar(title: const Text('CCAvenue Payment')),
       body: Center(
         child: ElevatedButton(
-          onPressed: initiatePayment,
+          onPressed:
+              //initiatePayment,
+              () async {
+            int subscriptionId = widget.subscriptionId;
+            // ignore: avoid_print
+            print("objects: $subscriptionId");
+            final url =
+                Uri.parse('https://emaryam.com/#/payments/$subscriptionId');
+
+            if (await canLaunchUrl(url)) {
+              await launchUrl(url,
+                  mode: LaunchMode.externalApplication); // optional but better
+            } else {
+              debugPrint('Could not launch URL');
+            }
+          },
           child: const Text('Pay Now'),
         ),
       ),

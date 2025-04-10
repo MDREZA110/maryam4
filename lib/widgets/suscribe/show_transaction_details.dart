@@ -11,9 +11,11 @@ class DisplayTransactionDetailsScreen extends StatelessWidget {
   final double price;
   final String name;
   final SubscriptionData subscriptionData;
+  final int subscriptionId;
 
   const DisplayTransactionDetailsScreen(
       {super.key,
+      required this.subscriptionId,
       required this.phoneNumber,
       required this.price,
       required this.name,
@@ -77,6 +79,21 @@ class DisplayTransactionDetailsScreen extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
+                          text: 'Subscription Id:  ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.black),
+                        ),
+                        TextSpan(
+                          text: subscriptionId.toString(),
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
                           text: 'Phone Number:  ',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, color: Colors.black),
@@ -126,8 +143,9 @@ class DisplayTransactionDetailsScreen extends StatelessWidget {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => PaymentScreen(
-                              //subscriptionData: subscriptionData,
-                              ),
+                            subscriptionId: subscriptionId,
+                            //subscriptionData: subscriptionData,
+                          ),
                         ),
                       );
                     },
