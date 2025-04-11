@@ -31,7 +31,8 @@ class OtpScreen extends StatefulWidget {
 }
 
 class _OtpScreenState extends State<OtpScreen> {
-  int _counter = 30;
+  int _counter = 60;
+  //30;
   Timer? _timer;
   //late String _generatedOtp;
   String _enteredOtp = '';
@@ -165,7 +166,8 @@ class _OtpScreenState extends State<OtpScreen> {
               onPressed: () async {
                 _timer?.cancel();
                 setState(() async {
-                  _counter = 30;
+                  _counter = 60;
+                  //30;
 
                   fetchOtp(context, widget.phoneNumber.trim());
                   //TODO

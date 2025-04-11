@@ -67,6 +67,7 @@ class SettingsTabState extends State<SettingsTab> {
   Widget build(BuildContext context) {
     final themeProvider = context.watch<ThemeProvider>();
     bool isDarkMode = themeProvider.isDarkMode; // Get dark mode state
+    bool isNameEmpty = user.name == null || user.name!.trim().isEmpty;
 
     return Container(
       color: isDarkMode ? Colors.black : Colors.white,
@@ -233,65 +234,99 @@ class SettingsTabState extends State<SettingsTab> {
                             const ShippingAndDeliveryPolicy()));
                   }),
 
-              ListTile(
-                  leading: SizedBox(
-                      width: 37,
-                      child: Icon(
-                        Icons.logout_outlined,
+              isNameEmpty
+                  ? ListTile(
+                      leading: SizedBox(
+                          width: 37,
+                          child: Icon(
+                            Icons.login,
+                            color: isDarkMode
+                                ? Colors.white
+                                : const Color.fromARGB(255, 27, 27, 27),
+                          )),
+                      title: Text("Login",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: isDarkMode
+                                ? Colors.white
+                                : const Color.fromARGB(255, 0, 0, 0),
+                          )),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        size: 16,
                         color: isDarkMode ? Colors.white : Colors.black,
-                      )),
-                  title: Text("Logout",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: isDarkMode ? Colors.white : Colors.black,
-                      )),
-                  trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: const Text("Logout"),
-                          content:
-                              const Text("Are you sure you want to logout?"),
-                          actions: [
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 168, 61, 53),
-                              ),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                                // Add logout functionality here (e.g., clear user data and navigate to login)
-                              },
-                              child: const Text(
-                                "Cancel",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                            TextButton(
-                              onPressed: () async {
-                                Navigator.of(context).pop();
-                                SharedPreferences prefs =
-                                    await SharedPreferences.getInstance();
-                                await prefs.clear();
-                                Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => SignUpScreen(),
-                                ));
-                              },
-                              child: const Text(
-                                "Yes",
-                                style: TextStyle(
-                                    color: Colors.blue,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ],
+                      ),
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => SignUpScreen()),
                         );
-                      },
-                    );
-                  })
+                      })
+                  : ListTile(
+                      leading: SizedBox(
+                          width: 37,
+                          child: Icon(
+                            Icons.logout_outlined,
+                            color: isDarkMode ? Colors.white : Colors.black,
+                          )),
+                      title: Text("Logout",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            color: isDarkMode ? Colors.white : Colors.black,
+                          )),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        size: 16,
+                        color: isDarkMode ? Colors.white : Colors.black,
+                      ),
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: const Text("Logout"),
+                              content: const Text(
+                                  "Are you sure you want to logout?"),
+                              actions: [
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        const Color.fromARGB(255, 168, 61, 53),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                    // Add logout functionality here (e.g., clear user data and navigate to login)
+                                  },
+                                  child: const Text(
+                                    "Cancel",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () async {
+                                    Navigator.of(context).pop();
+                                    SharedPreferences prefs =
+                                        await SharedPreferences.getInstance();
+                                    await prefs.clear();
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (context) => SignUpScreen(),
+                                    ));
+                                  },
+                                  child: const Text(
+                                    "Yes",
+                                    style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      })
             ],
           ),
         ),

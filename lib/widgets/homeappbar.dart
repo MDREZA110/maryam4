@@ -62,15 +62,38 @@ class _HomeAppBarState extends State<HomeAppBar> {
             widget.toggleSearching();
           },
         ),
-        IconButton(
-          icon: Image.asset(
-            'assets/images/icon_subscribe.png',
-            height: 20,
+
+        SizedBox(
+          height: 28,
+          width: 113,
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => SubscribeScreen()));
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFFFFCD29),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 4),
+            ),
+            child: const Text("Subscribe",
+                style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 14,
+                    color: Color.fromARGB(255, 0, 0, 0))),
           ),
-          onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => SubscribeScreen(),
-          )),
         ),
+        // IconButton(
+        //   icon: Image.asset(
+        //     'assets/images/icon_subscribe.png',
+        //     height: 20,
+        //   ),
+        //   onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+        //     builder: (context) => SubscribeScreen(),
+        //   )),
+        // ),
         const SizedBox(width: 10),
       ],
     );

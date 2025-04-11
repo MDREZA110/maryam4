@@ -21,6 +21,7 @@ class WrCardScreen extends StatefulWidget {
 
 class _WrCardScreenState extends State<WrCardScreen> {
   List<Map<String, dynamic>> contentList = [];
+  List<Map<String, dynamic>> recentCardItems = [];
 
   bool isLoading = true;
   String errorMessage = '';
@@ -29,8 +30,46 @@ class _WrCardScreenState extends State<WrCardScreen> {
   void initState() {
     super.initState();
     fetchData();
+
+    //   fetchContent();
   }
 
+// //^ api recent api
+
+//   Future<void> fetchContent() async {
+//     final url = Uri.parse(
+//         "https://api.emaryam.com/WebService.asmx/ViewRecentPageDetails");
+
+//     try {
+//       final response = await http.post(
+//         url,
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: jsonEncode({
+//           "MenuId": 2,
+//           "SubMenuId": 0,
+//         }),
+//       );
+
+//       if (response.statusCode == 200) {
+//         final data = jsonDecode(response.body);
+//         recentCardItems =
+//             List<dynamic>.from(data['d']).cast<Map<String, dynamic>>();
+//         print("recentCardItems: $recentCardItems");
+//         setState(() {
+//           isLoading = false;
+//         });
+//       } else {
+//         throw Exception('Failed to load data');
+//       }
+//     } catch (e) {
+//       print('Error fetching content: $e');
+//       recentCardItems = []; // reset list on error
+//     }
+//   }
+
+//^ for content from sub-menu get detail
   Future<void> fetchData() async {
     final url = Uri.parse(
         'https://api.emaryam.com/WebService.asmx/GetContentImageDetails');
@@ -259,7 +298,7 @@ class _WrCardScreenState extends State<WrCardScreen> {
                                   //  contentList.isNotEmpty
                                   //     ? contentList[0]["Title"].toString()
                                   //     :
-                                  'Title',
+                                  "संगत का असर",
                               contentId:
                                   //  contentList.isNotEmpty
                                   //     ? contentList[0]["ContentId"]
@@ -269,46 +308,66 @@ class _WrCardScreenState extends State<WrCardScreen> {
                                   //  contentList.isNotEmpty
                                   //     ? contentList[0]["Description"].toString()
                                   //     :
-                                  "Description",
+                                  "तरन्नुम आबिदी, सरफ़राज़गंज लखनऊ",
                               content:
                                   // contentList.isNotEmpty
                                   //     ? contentList[0]["Content"].toString()
                                   //     :
-                                  "Content",
+                                  "हम जिस भी उम्र में हों संगत का असर हमारे ऊपर होता ही होता है कभी फ़ौरन कभी धीरे-धीरे जो हम को पता नहीं चलता। हम कभी संगत ख़ुद चुनते हैं कभी वक़्त हालात किसी का साथ कर देता है।",
                             ),
                             MyCard(
-                              image: contentList.isNotEmpty
-                                  ? contentList[0]["ThumbnailImage"].toString()
-                                  : "http://emaryam.com/Uploads/Content/ThumbnailImage/322525.jpg",
-                              title: contentList.isNotEmpty
-                                  ? contentList[0]["Title"].toString()
-                                  : 'Title',
-                              contentId: contentList.isNotEmpty
-                                  ? contentList[0]["ContentId"]
-                                  : 30,
-                              description: contentList.isNotEmpty
-                                  ? contentList[0]["Description"].toString()
-                                  : "Description",
-                              content: contentList.isNotEmpty
-                                  ? contentList[0]["Content"].toString()
-                                  : "Content",
+                              image:
+                                  // contentList.isNotEmpty
+                                  // ? contentList[0]["ThumbnailImage"].toString()
+                                  // :
+                                  "http://emaryam.com/Uploads/Content/ThumbnailImage/76813.jpg",
+                              title:
+                                  //  contentList.isNotEmpty
+                                  //     ? contentList[0]["Title"].toString()
+                                  //     :
+                                  "एक-दूसरे से वादा कीजिए 011",
+                              contentId:
+                                  //  contentList.isNotEmpty
+                                  //     ? contentList[0]["ContentId"]
+                                  //     :
+                                  30,
+                              description:
+                                  //  contentList.isNotEmpty
+                                  //     ? contentList[0]["Description"].toString()
+                                  //     :
+                                  "Mariyam Magazine",
+                              content:
+                                  // contentList.isNotEmpty
+                                  //     ? contentList[0]["Content"].toString()
+                                  //     :
+                                  "शादी के बाद शुरु की ज़िन्दगी बड़ी ख़ूबसूरत, इमोशंस से भरी और मोहब्बत से भरपूर होती है। इस टाइम से भरपूर फ़ायदा उठाना चाहिए और आने वाले वक़्त को और भी ख़ूबसूरत ",
                             ),
                             MyCard(
-                              image: contentList.isNotEmpty
-                                  ? contentList[0]["ThumbnailImage"].toString()
-                                  : "http://emaryam.com/Uploads/Content/ThumbnailImage/322525.jpg",
-                              title: contentList.isNotEmpty
-                                  ? contentList[0]["Title"].toString()
-                                  : 'Title',
-                              contentId: contentList.isNotEmpty
-                                  ? contentList[0]["ContentId"]
-                                  : 29,
-                              description: contentList.isNotEmpty
-                                  ? contentList[0]["Description"].toString()
-                                  : "Description",
-                              content: contentList.isNotEmpty
-                                  ? contentList[0]["Content"].toString()
-                                  : "Content",
+                              image:
+                                  // contentList.isNotEmpty
+                                  // ? contentList[0]["ThumbnailImage"].toString()
+                                  // :
+                                  "http://emaryam.com/Uploads/Content/ThumbnailImage/51481.jpg",
+                              title:
+                                  //  contentList.isNotEmpty
+                                  //     ? contentList[0]["Title"].toString()
+                                  //     :
+                                  "एक-दूसरे से वादा कीजिए 01",
+                              contentId:
+                                  //  contentList.isNotEmpty
+                                  //     ? contentList[0]["ContentId"]
+                                  //     :
+                                  28,
+                              description:
+                                  //  contentList.isNotEmpty
+                                  //     ? contentList[0]["Description"].toString()
+                                  //     :
+                                  "Mariyam Magazine",
+                              content:
+                                  // contentList.isNotEmpty
+                                  //     ? contentList[0]["Content"].toString()
+                                  //     :
+                                  "शादी के बाद शुरु की ज़िन्दगी बड़ी ख़ूबसूरत, इमोशंस से भरी और मोहब्बत से भरपूर होती है। इस टाइम से भरपूर फ़ायदा उठाना चाहिए और आने वाले वक़्त को और भी ख़ूबसूरत बनाने के लिए एक-दूसरे से कुछ वादे भी करना चाहिएं। यह वादे इसलिए ज़रूरी हैं ताकि एक-दूसरे पर भरोसा, दोस्ती और मोहब्बत ",
                             ),
                             SizedBox(
                               height: 24,

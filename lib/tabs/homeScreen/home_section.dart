@@ -319,7 +319,7 @@ class _HomeSectionState extends State<HomeSection> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: 30,
+                          horizontal: 20,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -443,25 +443,46 @@ class _HomeSectionState extends State<HomeSection> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 28, vertical: 8),
+                            horizontal: 45, vertical: 6),
                         child: Container(
-                          color: const Color.fromARGB(255, 205, 56, 101),
-                          height: 370,
+                          decoration: BoxDecoration(
+                              //borderRadius: BorderRadius.circular(20),
+                              border: Border.all(
+                                color: Colors.pink,
+                                width: 3.5,
+                              ),
+                              color: Color(0xFFFAF9F6)
+                              // color: const Color.fromARGB(255, 205, 56, 101),
+                              // boxShadow: [
+                              //   BoxShadow(
+                              //     color: isDarkMode
+                              //         ? Colors.black.withOpacity(0.5)
+                              //         : const Color.fromARGB(255, 255, 190, 209),
+                              //     // ? Colors.black.withOpacity(0.5)
+                              //     // : Colors.grey.withOpacity(0.5),
+                              //     spreadRadius: 2,
+                              //     blurRadius: 7,
+                              //     offset: const Offset(0, 3),
+                              //   ),
+                              // ],
+                              ),
+                          // color: const Color.fromARGB(255, 205, 56, 101),
+                          height: 376,
                           width: double.infinity,
                           child: Column(
                             children: [
                               const SizedBox(
-                                height: 8,
+                                height: 16,
                               ),
                               const Text(
-                                'Current Issue',
+                                'CURRENT ISSUE',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 20,
-                                    color: Colors.white),
+                                    color: Colors.pink),
                               ),
                               const SizedBox(
-                                height: 6,
+                                height: 11,
                               ),
                               GestureDetector(
                                 // Handle current issue tap
@@ -502,16 +523,19 @@ class _HomeSectionState extends State<HomeSection> {
                                         fontSize: 16,
                                         color: Color.fromARGB(255, 0, 0, 0))),
                               ),
+                              const SizedBox(
+                                height: 5,
+                              ),
                             ],
                           ),
                         ),
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 45,
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
+                      // SizedBox(
+                      //   height: 20,
+                      // ),
                     ],
                   ),
                 ),

@@ -1,7 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:maryam/models/sharedpref.dart';
+import 'package:maryam/models/user.dart';
 import 'package:maryam/screens/signup.dart';
+import 'package:maryam/tabs/tab.dart';
 //import 'dart:async';
 
 class SplashScreen extends StatefulWidget {
@@ -15,11 +18,40 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const SignUpScreen()),
-      );
+    loadUser(); // Load user on widget init
+
+    //^old code
+    // Timer(const Duration(seconds: 3), () {
+    //   Navigator.of(context).pushReplacement(
+    //     MaterialPageRoute(builder: (context) => const SignUpScreen()),
+    //   );
+    // });
+  }
+
+  User user = User();
+
+  Future<void> loadUser() async {
+    User? loadedUser = await PreferenceService.getUser();
+    setState(() {
+      user = loadedUser ?? User(); // Use empty User object if null
     });
+
+    // Perform navigation after user data is loaded
+    bool isNameEmpty = user.name == null || user.name!.trim().isEmpty;
+
+    if (isNameEmpty) {
+      Timer(const Duration(seconds: 3), () {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const SignUpScreen()),
+        );
+      });
+    } else {
+      Timer(const Duration(seconds: 3), () {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const MyTabBar()),
+        );
+      });
+    }
   }
 
   @override
