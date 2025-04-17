@@ -527,11 +527,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const EdgeInsets.symmetric(horizontal: 127, vertical: 15),
                 child: ElevatedButton(
                   onPressed: () async {
-                    // SharedPreferences prefs =
-                    //     await SharedPreferences.getInstance();
-                    // await prefs.clear();
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const MyTabBar()));
+                    //// SharedPreferences prefs =
+                    ////     await SharedPreferences.getInstance();
+                    //// await prefs.clear();
+
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => const MyTabBar()),
+                      (Route<dynamic> route) => false,
+                    );
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //     builder: (context) => const MyTabBar()));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.grey, //#CD3864

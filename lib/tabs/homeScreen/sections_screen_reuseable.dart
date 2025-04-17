@@ -58,119 +58,132 @@ class SectionTemplateState extends State<SectionTemplate> {
     bool isDarkMode = themeProvider.isDarkMode; // Get dark mode from Provider
     return Container(
       color: isDarkMode ? Colors.black : Colors.white,
-      child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 16,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: widget.cardItems.isEmpty
+          ? Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 100),
+                child: CircularProgressIndicator(
+                  color: Colors.pink,
+                ),
+              ),
+            )
+          : SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  ...widget.cardItems
-                      .where(
-                          (item) => item['MenuId'].toString() == widget.menuId)
-                      .map((item) // =>
-                          {
-                    if (count < 1) {
-                      count++;
-                      return GestureDetector(
-                        onTap: () =>
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => WrCardScreen(
-                                      contentId: item["ContentId"],
-                                    ))),
-                        child: Column(
-                          children: [
-                            Card(
-                              color: isDarkMode
-                                  ? const Color.fromARGB(255, 91, 91, 91)
-                                  : Colors.white,
-                              margin: const EdgeInsets.symmetric(vertical: 8),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(24)),
-                              elevation: 6,
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ...widget.cardItems
+                            .where((item) =>
+                                item['MenuId'].toString() == widget.menuId)
+                            .map((item) // =>
+                                {
+                          if (count < 1) {
+                            count++;
+                            return GestureDetector(
+                              onTap: () =>
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => WrCardScreen(
+                                            contentId: item["ContentId"],
+                                          ))),
                               child: Column(
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20, vertical: 20),
-                                    child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(
-                                            16), // Rounded corners
-                                        child: Image.network(
-                                          item["ThumbnailImage"],
-                                          height: 150,
-                                          width: 280,
-                                          fit: BoxFit.cover,
-                                        )),
-                                  ),
-                                  // const SizedBox(
-                                  //   height: 4,
-                                  // ),
-                                  Text(
-                                    item["Title"],
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.pink,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 30),
-                                    child: Text(
-                                      maxLines: 3,
-                                      overflow: TextOverflow.ellipsis,
-                                      _stripHtmlTags(item["Content"]),
-                                      // 'अब्बास असग़र शबरेज़ कुरआने मजीद, इस्लाम से पहले के ज़माने में\nलड़कियों की अफ़सोसनाक हालत को इस तरह बयान करता है,.....',
-                                      style: TextStyle(
-                                        color: isDarkMode
-                                            ? Color(0xFFF3F3F3)
-                                            : Color.fromARGB(255, 32, 32, 32),
-                                      ),
+                                  Card(
+                                    color: isDarkMode
+                                        ? const Color.fromARGB(255, 91, 91, 91)
+                                        : Colors.white,
+                                    margin:
+                                        const EdgeInsets.symmetric(vertical: 8),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(24)),
+                                    elevation: 6,
+                                    child: Column(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 20, vertical: 20),
+                                          child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      16), // Rounded corners
+                                              child: Image.network(
+                                                item["ThumbnailImage"],
+                                                height: 150,
+                                                width: 280,
+                                                fit: BoxFit.cover,
+                                              )),
+                                        ),
+                                        // const SizedBox(
+                                        //   height: 4,
+                                        // ),
+                                        Text(
+                                          item["Title"],
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.pink,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 30),
+                                          child: Text(
+                                            maxLines: 3,
+                                            overflow: TextOverflow.ellipsis,
+                                            _stripHtmlTags(item["Content"]),
+                                            // 'अब्बास असग़र शबरेज़ कुरआने मजीद, इस्लाम से पहले के ज़माने में\nलड़कियों की अफ़सोसनाक हालत को इस तरह बयान करता है,.....',
+                                            style: TextStyle(
+                                              color: isDarkMode
+                                                  ? Color(0xFFF3F3F3)
+                                                  : Color.fromARGB(
+                                                      255, 32, 32, 32),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 12,
+                                        )
+                                      ],
                                     ),
                                   ),
                                   SizedBox(
-                                    height: 12,
+                                    height: 9,
                                   )
                                 ],
                               ),
-                            ),
-                            SizedBox(
-                              height: 9,
-                            )
-                          ],
-                        ),
-                      );
-                    }
+                            );
+                          }
 
-                    return MyCard(
-                      image: item["ThumbnailImage"],
-                      title: item["Title"],
-                      contentId: item["ContentId"],
-                      description: item["Description"] ?? "",
-                      content: item["Content"] ?? "",
-                      //    date: item["PostOn"],
-                    );
-                  }),
-                  SizedBox(
-                    height: 80,
-                  )
+                          return MyCard(
+                            image: item["ThumbnailImage"],
+                            title: item["Title"],
+                            contentId: item["ContentId"],
+                            description: item["Description"] ?? "",
+                            content: item["Content"] ?? "",
+                            //    date: item["PostOn"],
+                          );
+                        }),
+                        SizedBox(
+                          height: 80,
+                        )
+                      ],
+                    ),
+                  ),
+                  //^
                 ],
               ),
             ),
-            //^
-          ],
-        ),
-      ),
     );
   }
 }

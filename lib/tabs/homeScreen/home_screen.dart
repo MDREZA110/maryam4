@@ -41,6 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
   int sectionIndex = 0;
   List<Map<String, dynamic>> cardItems = [];
 
+  late ScrollController _scrollController;
+  bool _showBackToTopButton = false;
+
 //List<Map<String, dynamic>>  widget.filteredList = [];
   //bool isSearching = false; // Toggle variable
 
@@ -50,6 +53,35 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     fetchDardDetail(); // Initially, show all items
+
+//^  _scrollController controller
+    _scrollController = ScrollController();
+
+    _scrollController.addListener(() {
+      if (_scrollController.offset > 300 && !_showBackToTopButton) {
+        setState(() {
+          _showBackToTopButton = true;
+        });
+      } else if (_scrollController.offset <= 300 && _showBackToTopButton) {
+        setState(() {
+          _showBackToTopButton = false;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollToTop() {
+    _scrollController.animateTo(
+      0,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
   }
 
   final title = ['Family', 'Women Rights', 'Parvarish', 'Health', 'Tafseer'];
@@ -152,6 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: isDarkMode ? Colors.black : Colors.white,
       body: SingleChildScrollView(
+        controller: _scrollController,
         child: Container(
           color: isDarkMode ? Colors.black : Colors.white,
           child: Column(
@@ -356,6 +389,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
               //sectionsInHome[sectionIndex],
             ],
+          ),
+        ),
+      ),
+      floatingActionButton: AnimatedOpacity(
+        opacity: _showBackToTopButton ? 1.0 : 0.0, //&& sectionIndex == 0
+        duration: Duration(milliseconds: 300),
+        child: IgnorePointer(
+          ignoring: !_showBackToTopButton,
+          child: FloatingActionButton(
+            onPressed: _scrollToTop,
+            child: Icon(Icons.arrow_upward),
           ),
         ),
       ),

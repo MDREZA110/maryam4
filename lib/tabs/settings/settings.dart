@@ -36,6 +36,7 @@ class SettingsTabState extends State<SettingsTab> {
   String name = "Guest";
   String phoneNumber = "0000000000";
 
+  bool isLoading = true; // Add a loading state
   @override
   void initState() {
     super.initState();
@@ -53,10 +54,14 @@ class SettingsTabState extends State<SettingsTab> {
   //! new shared pref
   Future<void> _loadUserAndPreferences() async {
     // Load user using PreferenceService instead of local method
+
+    setState(() {
+      isLoading = false; // Set loading to false after user is loaded
+    });
     User? loadedUser = await PreferenceService.getUser();
     if (loadedUser != null) {
       setState(() {
-        user = loadedUser;
+        user = loadedUser; // Use empty User object if null
       });
     }
   }
@@ -77,7 +82,17 @@ class SettingsTabState extends State<SettingsTab> {
             top: 8,
           ),
           child: Center(
-            child: Column(
+            child:
+                // isLoading
+                //     ? SizedBox(
+                //         height: 130,
+                //         width: 130,
+                //         child:
+                //             CircularProgressIndicator(), // Show a spinner while loading
+                //       )
+                //     :
+
+                Column(
               children: [
                 SizedBox(
                   height: 130,
@@ -242,7 +257,7 @@ class SettingsTabState extends State<SettingsTab> {
                             Icons.login,
                             color: isDarkMode
                                 ? Colors.white
-                                : const Color.fromARGB(255, 27, 27, 27),
+                                : const Color.fromARGB(255, 94, 94, 94),
                           )),
                       title: Text("Login",
                           style: TextStyle(
@@ -258,21 +273,29 @@ class SettingsTabState extends State<SettingsTab> {
                         color: isDarkMode ? Colors.white : Colors.black,
                       ),
                       onTap: () {
-                        Navigator.of(context).push(
+                        Navigator.of(context).pushAndRemoveUntil(
+                          //^  pushAndRemoveUntil    -- remove all previous routes from stack
                           MaterialPageRoute(
                               builder: (context) => SignUpScreen()),
+                          (Route<dynamic> route) => false,
                         );
+                        // Navigator.of(context).push(
+                        //   MaterialPageRoute(
+                        //       builder: (context) => SignUpScreen()),
+                        // );
                       })
                   : ListTile(
                       leading: SizedBox(
                           width: 37,
                           child: Icon(
                             Icons.logout_outlined,
-                            color: isDarkMode ? Colors.white : Colors.black,
+                            color: isDarkMode
+                                ? Colors.white
+                                : const Color.fromARGB(255, 94, 94, 94),
                           )),
                       title: Text("Logout",
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 16,
                             fontWeight: FontWeight.w500,
                             color: isDarkMode ? Colors.white : Colors.black,
                           )),
@@ -310,8 +333,9 @@ class SettingsTabState extends State<SettingsTab> {
                                     SharedPreferences prefs =
                                         await SharedPreferences.getInstance();
                                     await prefs.clear();
+
                                     Navigator.of(context)
-                                        .push(MaterialPageRoute(
+                                        .pushReplacement(MaterialPageRoute(
                                       builder: (context) => SignUpScreen(),
                                     ));
                                   },

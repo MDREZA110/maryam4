@@ -26,12 +26,44 @@ class _WrCardScreenState extends State<WrCardScreen> {
   bool isLoading = true;
   String errorMessage = '';
 
+  late ScrollController _scrollController;
+  bool _showBackToTopButton = false;
+
   @override
   void initState() {
     super.initState();
     fetchData();
 
     //   fetchContent();
+
+    //^ ScrollController
+    _scrollController = ScrollController();
+
+    _scrollController.addListener(() {
+      if (_scrollController.offset > 300 && !_showBackToTopButton) {
+        setState(() {
+          _showBackToTopButton = true;
+        });
+      } else if (_scrollController.offset <= 300 && _showBackToTopButton) {
+        setState(() {
+          _showBackToTopButton = false;
+        });
+      }
+    });
+  }
+
+  void _scrollToTop() {
+    _scrollController.animateTo(
+      0,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
 // //^ api recent api
@@ -188,6 +220,7 @@ class _WrCardScreenState extends State<WrCardScreen> {
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
+              controller: _scrollController,
               physics: const BouncingScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -379,6 +412,22 @@ class _WrCardScreenState extends State<WrCardScreen> {
                 ],
               ),
             ),
+
+      floatingActionButton: AnimatedOpacity(
+        opacity: _showBackToTopButton ? 1.0 : 0.0,
+        duration: Duration(milliseconds: 300),
+        child: IgnorePointer(
+          ignoring: !_showBackToTopButton,
+          child: FloatingActionButton(
+            backgroundColor: const Color(0xFFCD3864),
+            onPressed: _scrollToTop,
+            child: Icon(
+              Icons.arrow_upward,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

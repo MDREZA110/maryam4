@@ -38,7 +38,7 @@ Future<void> fetchOtp(BuildContext context, String phoneNumber) async {
           print('OTP: $otp');
 
           // Navigate to OTP Screen
-          Navigator.of(context).push(MaterialPageRoute(
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (context) => OtpScreen(phoneNumber: phoneNumber, otp: otp),
           ));
         }

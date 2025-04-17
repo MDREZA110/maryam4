@@ -147,9 +147,9 @@ class _MoreTabState extends State<MoreTab> {
                       ? () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => ArchiveScreen(
-                                    cardItems: cardItems,
-                                    menuId: map[options[i]]!,
-                                    title: options[i],
+                                  // cardItems: cardItems,
+                                  // menuId: map[options[i]]!,
+                                  // title: options[i],
                                   )));
                         }
                       : () {

@@ -106,60 +106,66 @@ class _OnTapSliderScreenState extends State<OnTapSliderScreen> {
 
 //^ BODY
 
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 20,
-                left: 20,
-                right: 20,
-              ),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(18), // Rounded corners
-                  child: Image.network(
-                    widget.imgUrl,
-                  )),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Text(
-              widget.title,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.pink,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 25),
-              // ignore: avoid_unnecessary_containers
-              child: Container(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 20,
+      body: (widget.text.isEmpty || widget.title.isEmpty)
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 20,
+                      left: 20,
+                      right: 20,
+                    ),
+                    child: ClipRRect(
+                        borderRadius:
+                            BorderRadius.circular(18), // Rounded corners
+                        child: Image.network(
+                          widget.imgUrl,
+                        )),
                   ),
-                  child: Expanded(
-                    child: Html(
-                      data: widget.text,
-                      style: {
-                        "*": Style(
-                          fontSize: FontSize(textSizeProvider.textSize),
-                          color: isDarkMode ? Colors.white : Colors.black,
-                          // Change font color to red (Modify as needed)
-                          backgroundColor: Colors.transparent,
-                        ),
-                      },
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Text(
+                    widget.title,
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.pink,
                     ),
                   ),
-                ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 3, horizontal: 25),
+                    // ignore: avoid_unnecessary_containers
+                    child: Container(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 20,
+                        ),
+                        child: Expanded(
+                          child: Html(
+                            data: widget.text,
+                            style: {
+                              "*": Style(
+                                fontSize: FontSize(textSizeProvider.textSize),
+                                color: isDarkMode ? Colors.white : Colors.black,
+                                // Change font color to red (Modify as needed)
+                                backgroundColor: Colors.transparent,
+                              ),
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }

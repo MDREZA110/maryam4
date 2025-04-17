@@ -42,13 +42,18 @@ class _SplashScreenState extends State<SplashScreen> {
     if (isNameEmpty) {
       Timer(const Duration(seconds: 3), () {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const SignUpScreen()),
+          MaterialPageRoute(
+            builder: (context) => const MyTabBar(),
+            //^const SignUpScreen(),      TODO:  signup screen
+          ),
         );
       });
     } else {
       Timer(const Duration(seconds: 3), () {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const MyTabBar()),
+          MaterialPageRoute(
+            builder: (context) => const MyTabBar(),
+          ),
         );
       });
     }

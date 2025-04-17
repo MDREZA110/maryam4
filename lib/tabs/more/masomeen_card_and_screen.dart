@@ -73,8 +73,19 @@ class MasomeenRMoreCardsState extends State<MasomeenMoreCards> {
     return Scaffold(
       backgroundColor: isDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back,
+                color: isDarkMode ? Colors.white : Colors.black)),
         backgroundColor: isDarkMode ? Colors.black : Colors.white,
-        title: Text(widget.title),
+        title: Text(widget.title,
+            style: TextStyle(
+              color: isDarkMode ? Colors.white : Colors.black,
+              // fontSize: 20,
+              fontWeight: FontWeight.bold,
+            )),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -113,6 +124,9 @@ class MasomeenCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = context.watch<ThemeProvider>();
+    bool isDarkMode = themeProvider.isDarkMode; // Get dark mode from Provider
+
     return GestureDetector(
       onTap: () => Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => MasomeenCardScreen(
@@ -120,7 +134,8 @@ class MasomeenCard extends StatelessWidget {
                 subMenuId: subMenuId,
               ))),
       child: Card(
-        color: const Color.fromARGB(255, 241, 241, 241),
+        color:
+            isDarkMode ? const Color.fromARGB(255, 91, 91, 91) : Colors.white,
         margin: const EdgeInsets.symmetric(vertical: 8),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         elevation: 4,

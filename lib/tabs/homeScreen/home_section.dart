@@ -35,6 +35,9 @@ class _HomeSectionState extends State<HomeSection> {
   List<Map<String, dynamic>> currentIssues = [];
   bool isLoading = true;
 
+  late ScrollController _scrollController;
+  bool _showBackToTopButton = false;
+
   @override
   void initState() {
     super.initState();
